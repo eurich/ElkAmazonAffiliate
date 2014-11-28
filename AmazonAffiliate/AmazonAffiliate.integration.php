@@ -10,18 +10,20 @@ function add_amazon_affiliate(&$output, &$message)
 			$output['body']
 		);
 }
+
 function add_amazon_affiliate_setting(&$config_vars)
 {
-	loadLanguage('amazonaffiliate');
+	loadLanguage('AmazonAffiliate');
 	
 	$config_vars = array_merge($config_vars, array(
 		'',
 		array('text', 'amazon_affiliate_id'),
 
 	));
-	
 }
+
 function add_amazon_css()
 {
-	loadCSSFile('amazon.css');
+	if (empty($_REQUEST['name']) || $_REQUEST['name'] !== 'packages')
+		loadCSSFile('amazon.css');
 }
